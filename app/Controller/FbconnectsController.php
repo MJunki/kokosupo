@@ -58,9 +58,12 @@
             //}
                 //debug($this->Session->read('mydata'));
                 $data = $this->User->signinfb($this->Session->read('mydata'));
-                if($this->Auth->login($data)){
-                    return $this->redirect($this->Auth->redirect());
-                }
+                debug($this->facebook->api('/me','GET',array('locale'=>'ja_JP')));
+                debug($user);
+                debug($data);
+                //if($this->Auth->login($data)){
+                    //return $this->redirect($this->Auth->redirect());
+                //}
             }else{//認証前
                 $url = $this->facebook->getLoginUrl(array(
                 'scope' => 'email,publish_stream,user_birthday'
